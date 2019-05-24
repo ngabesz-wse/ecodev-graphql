@@ -1,57 +1,35 @@
-# endpoints
+## Symfony Overblog Graphqlbundle integration
 
-/graphql
+docs: https://github.com/youshido-php/GraphQLBundle
 
-/graphql/explorer
-
-## Features
-
-This Symfony starter-kit is bundled with:
-- Symfony 3
-- nginx
-- PHP-fpm 7.2
-- phpmyadmin
-- composer
-- MailCatcher
-
-Each service runs in a dedicated container, and the whole thing is orchestrated with `docker-compose`.
-
-## Requirements
-
-You need [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/) installed on your machine.
-
-## Quick start
+# Quick start
 
 ```sh
 # boot containers
 docker-compose up -d
 
 # browse website
-xdg-open http://localhost
+http://localhost
 
-# watch emails sent in MailCatcher
-xdg-open http://localhost:81
+#phpmyadmin
+http://localhost:8080
 
-# run Symfony console
+# run Symfony console from outside of continer
 ./console
 
-# connect to PostgreSQL
-./psql
+# run Symfony console from outside of continer
+./composer
+
+# graphql explorer
+http://localhost/app_dev.php/graphql/explorer
+
+# graphql endpoint
+http://localhost/app_dev.php/graphql
 ```
 
-### Map a different host port
+## tasks
+Implement connections: Product - Manufacturer (many-to-one), Product - Categories (many-to-many)
+Implement mutations: delete product, update product (patrial), insert product, CRUD relations through owning side
 
-By default, the web server will be mapped to host port `80`, but specifying another port is as easy as:
 
-```
-EXTERNAL_PORT=8000 docker-compose up -d
-xdg-open http://localhost:8000
-```
 
-### Map a different host port for MailCatcher
-
-By default, MailCatcher web interface will be mapped to host port `81`. Change with:
-```
-EXTERNAL_MAILCATCHER_PORT=8001 docker-compose up -d
-xdg-open http://localhost:8001
-```
